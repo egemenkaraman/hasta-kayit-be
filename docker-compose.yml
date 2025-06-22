@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-hastane
+    environment:
+      MYSQL_ROOT_PASSWORD: 616161
+      MYSQL_DATABASE: hastane
+    ports:
+      - "3306:3306"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql

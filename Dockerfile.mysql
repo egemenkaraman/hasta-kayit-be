@@ -1,0 +1,11 @@
+FROM mysql:8.0
+
+ENV MYSQL_ROOT_PASSWORD=616161
+ENV MYSQL_DATABASE=hastane
+
+COPY init.sql /docker-entrypoint-initdb.d/
+
+# Add permissions to the initialization script
+RUN chmod 644 /docker-entrypoint-initdb.d/init.sql
+
+EXPOSE 3306 
